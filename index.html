@@ -1,0 +1,97 @@
+<style>
+
+        body{
+                background-image: url(backgrouond.webp);
+                overflow:none;
+        }
+        ul.navbar {
+            list-style-type: none;
+            margin: 0;
+        z-index:2;
+            padding: 0;
+            overflow: hidden;
+          position:absolute;
+          width:100%;
+          top:0px;
+          left:0px;
+        }
+        li.nav-item image {
+          size: 100%;
+          color: white;
+          display: block;
+          color: white;
+          transition: all 1s;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+        li.nav-item {
+            float: right;
+            cursor: pointer !important;
+        }
+
+        li.nav-item a {
+            display: block;
+            color: white;
+            transition: all 1s;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li.nav-item a:hover {
+            background-color: #444;
+            border-radius: 15px;
+        }
+
+        
+      #frame{
+        border:0px solid black;
+        position:absolute;
+        width:100%;
+        z-index:1;
+        height:100%;
+        bottom:0px;
+        left:0px;
+      }
+
+      li.icon image {
+          size: 100%;
+          color: white;
+          display: block;
+          color: white;
+          transition: all 1s;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+        li.icon {
+            float: left;
+            cursor: pointer !important;
+        }
+
+
+        li.icon:hover {
+            background-color: #444;
+            border-radius: 15px;
+        }
+    </style>
+<ul class="navbar">
+  <li class="icon"><img src="/icon.png"/></a></li>
+  <li class="nav-item"><a onclick="frame.src='/games.html';"><img src="/icons8-game-35.png"/></a></li>
+  <li class="nav-item"><a onclick="frame.src='/home.html';"><img src="/icons8-home-35.png"/></a></li>
+
+</ul>
+<link href="index.css" rel="stylesheet">
+<iframe id="frame" src="/home.html"></iframe>
+<script>
+  var frame=document.getElementById("frame");
+  function get_cookie(cookie_name) { const value = "; " + document.cookie; const parts = value.split("; " + cookie_name + "="); if (parts.length === 2) return parts.pop().split(";").shift(); } 
+  if (get_cookie("location")!=null){
+          frame.src=get_cookie("location");
+  }
+  frame.style.height=(window.innerHeight-document.getElementsByClassName("navbar")[0].offsetHeight+5)+"px";
+  setInterval(function(){
+          document.cookie="location="+frame.contentWindow.location.href.replace(window.location.origin,"")+"; expires=Thu, 18 Dec 9013 12:00:00 UTC; path=/";
+  },100);
+</script>
